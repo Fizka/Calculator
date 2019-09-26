@@ -9,12 +9,8 @@ public class CalculattorFrame extends JFrame {
 
         super("Calculator");
 
-        JPanel buttonPanel = new ButtonPanel();
+        JFrame buttonPanel = new ButtonPanel();
         add(buttonPanel);
-
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        pack();
-        setVisible(true);
 
     }
 

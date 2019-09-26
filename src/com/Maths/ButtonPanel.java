@@ -1,11 +1,11 @@
 package com.Maths;
-
+import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class ButtonPanel extends JPanel implements ActionListener {
+public class ButtonPanel extends JFrame implements ActionListener {
 
     public static final int HEIGHT = 400;
     public static  final  int WIDTH = 400;
@@ -26,25 +26,27 @@ public class ButtonPanel extends JPanel implements ActionListener {
     private JButton dividerButton;
     private JButton multiplicationButton;
     private JButton deleteButton;
+    private JButton enterButton;
     private JButton nextButton;
     private JButton prevButton;
     private JTextField WindowWithResult;
     private JTextField WindowWithnote;
+    private JTextField WindowWithComunicat;
     private JLabel resultLabel;
 
-    private JPanel sub1,sub2,sub3,sub4;
+    private JPanel sub1;
 
     public ButtonPanel(){
 
         sub1 = new JPanel();
-        sub2 = new JPanel();
-        sub3 = new JPanel();
-        sub4 = new JPanel();
 
-
-        WindowWithResult = new JTextField("         ");
+        WindowWithComunicat = new JTextField();
+        WindowWithComunicat.setColumns(20);
+        WindowWithComunicat.setPreferredSize(new Dimension(20,20));
+        WindowWithComunicat.setMaximumSize(new Dimension(230,20));
+        WindowWithResult = new JTextField("0", 20);
         WindowWithnote = new JTextField("0",20);
-        resultLabel = new JLabel("Result: ");
+        resultLabel = new JLabel("FUCK Y");
          oneButton = new JButton("1");
          twoButton = new JButton("2");
          threeButton = new JButton("3");
@@ -61,8 +63,9 @@ public class ButtonPanel extends JPanel implements ActionListener {
          dividerButton = new JButton("/");
          multiplicationButton = new JButton("*");
          deleteButton = new JButton("DEL");
-         nextButton = new JButton("->");
-         prevButton = new JButton("<-");
+         enterButton = new JButton("ENTER");
+         nextButton = new JButton(">");
+         prevButton = new JButton("<");
 
         //WindowWithResult.setBounds(40,40,40,40);
 
@@ -84,34 +87,125 @@ public class ButtonPanel extends JPanel implements ActionListener {
         deleteButton.addActionListener(this);
         nextButton.addActionListener(this);
         prevButton.addActionListener(this);
-        WindowWithnote.addFocusListener(this);
+       // what the fuck going on?  WindowWithnote.addFocusListener(this);
         WindowWithResult.setEditable(false);
+        //dorzuc enter - akcja
 
-       // GridLayout gl = new GridLayout();
-        //do zmiany
-        FlowLayout fl = new FlowLayout(FlowLayout.LEFT);
-        setLayout(fl);
+
+        GroupLayout layout = new GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setAutoCreateGaps(true);
+        layout.setAutoCreateContainerGaps(true);
+
+        layout.setHorizontalGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                .addComponent(WindowWithComunicat) // text
+                .addComponent(WindowWithnote) // text with number
+                .addGroup(layout.createSequentialGroup()
+                        .addComponent(resultLabel)
+                        .addComponent(WindowWithResult)
+                )
+                .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                                    .addComponent(oneButton) //1
+                                    .addComponent(fourButton) //4
+                                    .addComponent(sevenButton) //7
+                            )
+                            .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                                    .addComponent(twoButton) //2
+                                    .addComponent(fiveButton) //5
+                                    .addComponent(eightButton) //8
+                                    .addComponent(zeroButton) //0
+                            )
+                            .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                                    .addComponent(threeButton) //3
+                                    .addComponent(sixButton) //6
+                                    .addComponent(nineButton) //9
+                            )
+
+                        )
+                        .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(plusButton)
+                                    .addComponent(minusButton)
+                                )
+                                .addGroup(layout.createSequentialGroup()
+                                        .addComponent(multiplicationButton)
+                                        .addComponent(dividerButton)
+                                )
+                                .addComponent(enterButton)
+                        )
+                        .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                                .addComponent(deleteButton)
+                                .addComponent(nextButton)
+                                .addComponent(prevButton)
+                                .addComponent(equalButton)
+                        )
+                )
+        );
+
+        layout.linkSize(SwingConstants.HORIZONTAL, oneButton, twoButton, threeButton, fourButton,
+                fiveButton, sixButton, sevenButton, eightButton, nineButton, zeroButton);
+        layout.linkSize(SwingConstants.HORIZONTAL, deleteButton, nextButton, prevButton, equalButton);
+        layout.linkSize(SwingConstants.HORIZONTAL, plusButton, multiplicationButton);
+        layout.linkSize(SwingConstants.HORIZONTAL, WindowWithComunicat, WindowWithnote);
+        layout.linkSize(SwingConstants.HORIZONTAL, minusButton, dividerButton);
+
+        layout.setVerticalGroup(layout.createSequentialGroup()
+                .addGroup(layout.createSequentialGroup()
+                        .addComponent(WindowWithComunicat)
+                        .addComponent(WindowWithnote)
+                        .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                                .addComponent(resultLabel)
+                                .addComponent(WindowWithResult)
+                        )
+                )
+                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                        .addComponent(oneButton)
+                                        .addComponent(twoButton)
+                                        .addComponent(threeButton)
+                                )
+                                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                        .addComponent(fourButton)
+                                        .addComponent(fiveButton)
+                                        .addComponent(sixButton)
+                                )
+                                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                        .addComponent(sevenButton)
+                                        .addComponent(eightButton)
+                                        .addComponent(nineButton)
+                                )
+                                .addComponent(zeroButton)
+                        )
+                        .addGroup(layout.createParallelGroup()
+                                .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                                .addGroup(layout.createSequentialGroup()
+                                                .addComponent(plusButton)
+                                                .addComponent(multiplicationButton)
+                                                )
+                                                .addGroup(layout.createSequentialGroup()
+                                                .addComponent(minusButton)
+                                                .addComponent(dividerButton)
+                                                 )
+                                        )
+                                        .addComponent(enterButton)
+                                )
+                        )
+                        .addGroup(layout.createSequentialGroup()
+                                .addComponent(deleteButton)
+                                .addComponent(nextButton)
+                                .addComponent(prevButton)
+                                .addComponent(equalButton)
+                        )
+                ));
+
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        pack();
+        setVisible(true);
         setPreferredSize(new Dimension(WIDTH,HEIGHT));
-
-        add(oneButton);
-        add(twoButton);
-        add(threeButton);
-        add(fourButton);
-        add(fiveButton);
-        add(sixButton);
-        add(sevenButton);
-        add(eightButton);
-        add(nineButton);
-        add(zeroButton);
-        add(plusButton);
-        add(minusButton);
-        add(equalButton);
-        add(dividerButton);
-        add(multiplicationButton);
-        add(deleteButton);
-        add(nextButton);
-        add(prevButton);
-        add(WindowWithResult);
 
     }
 
