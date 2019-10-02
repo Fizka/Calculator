@@ -7,8 +7,8 @@ import java.awt.event.ActionListener;
 
 public class ButtonPanel extends JFrame implements ActionListener {
 
-    public static final int HEIGHT = 400;
-    public static  final  int WIDTH = 400;
+    public static final int HEIGHT = 500;
+    public static  final  int WIDTH = 500;
 
     private JButton oneButton;
     private JButton twoButton;
@@ -35,6 +35,7 @@ public class ButtonPanel extends JFrame implements ActionListener {
     private JLabel resultLabel;
 
     private JPanel sub1;
+    Color ButtonColor = Color.CYAN;
 
     public ButtonPanel(){
 
@@ -42,32 +43,140 @@ public class ButtonPanel extends JFrame implements ActionListener {
 
         WindowWithComunicat = new JTextField();
         WindowWithComunicat.setColumns(20);
-        WindowWithComunicat.setPreferredSize(new Dimension(20,20));
-        WindowWithComunicat.setMaximumSize(new Dimension(230,20));
-        WindowWithResult = new JTextField("0", 20);
-        WindowWithnote = new JTextField("0",20);
-        resultLabel = new JLabel("FUCK Y");
-         oneButton = new JButton("1");
-         twoButton = new JButton("2");
-         threeButton = new JButton("3");
-         fourButton = new JButton("4");
-         fiveButton = new JButton("5");
-         sixButton = new JButton("6");
-         sevenButton = new JButton("7");
-         eightButton = new JButton("8");
-         nineButton = new JButton("9");
-         zeroButton = new JButton("0");
-         plusButton = new JButton("+");
-         minusButton = new JButton("-");
-         equalButton = new JButton("=");
-         dividerButton = new JButton("/");
-         multiplicationButton = new JButton("*");
-         deleteButton = new JButton("DEL");
-         enterButton = new JButton("ENTER");
-         nextButton = new JButton(">");
-         prevButton = new JButton("<");
+        WindowWithComunicat.setEditable(false);
+        WindowWithComunicat.setBackground(Color.lightGray);
 
-        //WindowWithResult.setBounds(40,40,40,40);
+        WindowWithResult = new JTextField("", 20);
+        WindowWithResult.setEditable(false);
+        WindowWithResult.setBackground(Color.LIGHT_GRAY);
+
+        WindowWithnote = new JTextField("",20);
+
+        resultLabel = new JLabel("OUTCOME =");
+        resultLabel.setFont(resultLabel.getFont().deriveFont(32.0f));
+        resultLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        resultLabel.setVerticalAlignment(SwingConstants.CENTER);
+
+        oneButton = new JButton("1");
+        oneButton.setSize(60,60);
+        oneButton.setMinimumSize(new Dimension(60,60));
+        oneButton.setFont(oneButton.getFont().deriveFont(32.0f));
+        oneButton.setHorizontalAlignment(SwingConstants.CENTER);
+        oneButton.setBackground(ButtonColor);
+
+         twoButton = new JButton("2");
+        twoButton.setSize(60,60);
+        twoButton.setMinimumSize(new Dimension(60,60));
+        twoButton.setFont(twoButton.getFont().deriveFont(32.0f));
+        twoButton.setHorizontalAlignment(SwingConstants.CENTER);
+        twoButton.setBackground(ButtonColor);
+
+         threeButton = new JButton("3");
+        threeButton.setSize(60,60);
+        threeButton.setMinimumSize(new Dimension(60,60));
+        threeButton.setFont(threeButton.getFont().deriveFont(32.0f));
+        threeButton.setHorizontalAlignment(SwingConstants.CENTER);
+        threeButton.setBackground(ButtonColor);
+
+         fourButton = new JButton("4");
+         fourButton.setSize(60,60);
+         fourButton.setMinimumSize(new Dimension(60,60));
+        fourButton.setFont(fourButton.getFont().deriveFont(32.0f));
+        fourButton.setHorizontalAlignment(SwingConstants.CENTER);
+        fourButton.setBackground(ButtonColor);
+
+         fiveButton = new JButton("5");
+         fiveButton.setSize(60,60);
+         fiveButton.setMinimumSize(new Dimension(60,60));
+        fiveButton.setFont(fiveButton.getFont().deriveFont(32.0f));
+        fiveButton.setHorizontalAlignment(SwingConstants.CENTER);
+        fiveButton.setBackground(ButtonColor);
+
+         sixButton = new JButton("6");
+         sixButton.setSize(60,60);
+         sixButton.setMinimumSize(new Dimension(60,60));
+        sixButton.setFont(sixButton.getFont().deriveFont(32.0f));
+        sixButton.setHorizontalAlignment(SwingConstants.CENTER);
+        sixButton.setBackground(ButtonColor);
+
+         sevenButton = new JButton("7");
+         sevenButton.setSize(60,60);
+         sevenButton.setMinimumSize(new Dimension(60,60));
+        sevenButton.setFont(sevenButton.getFont().deriveFont(32.0f));
+        sevenButton.setHorizontalAlignment(SwingConstants.CENTER);
+        sevenButton.setBackground(ButtonColor);
+
+         eightButton = new JButton("8");
+         eightButton.setSize(60,60);
+         eightButton.setMinimumSize(new Dimension(60,60));
+        eightButton.setFont(eightButton.getFont().deriveFont(32.0f));
+        eightButton.setHorizontalAlignment(SwingConstants.CENTER);
+        eightButton.setBackground(ButtonColor);
+
+         nineButton = new JButton("9");
+         nineButton.setSize(60,60);
+         nineButton.setMinimumSize(new Dimension(60,60));
+        nineButton.setFont(nineButton.getFont().deriveFont(32.0f));
+        nineButton.setHorizontalAlignment(SwingConstants.CENTER);
+        nineButton.setBackground(ButtonColor);
+
+         zeroButton = new JButton("0");
+        zeroButton.setSize(60,60);
+        zeroButton.setMinimumSize(new Dimension(60,60));
+        zeroButton.setFont(zeroButton.getFont().deriveFont(32.0f));
+        zeroButton.setHorizontalAlignment(SwingConstants.CENTER);
+        zeroButton.setBackground(ButtonColor);
+
+         plusButton = new JButton("+");
+         plusButton.setSize(60,60);
+         plusButton.setMinimumSize(new Dimension(60,60));
+        plusButton.setFont(plusButton.getFont().deriveFont(32.0f));
+        plusButton.setHorizontalAlignment(SwingConstants.CENTER);
+        plusButton.setBackground(ButtonColor);
+
+         minusButton = new JButton("-");
+         minusButton.setSize(60,60);
+        minusButton.setMinimumSize(new Dimension(60,60));
+        minusButton.setFont(minusButton.getFont().deriveFont(32.0f));
+        minusButton.setHorizontalAlignment(SwingConstants.CENTER);
+        minusButton.setBackground(ButtonColor);
+
+         equalButton = new JButton("=");
+         equalButton.setSize(60,60);
+         equalButton.setMinimumSize(new Dimension(60,60));
+        equalButton.setFont(equalButton.getFont().deriveFont(32.0f));
+        equalButton.setHorizontalAlignment(SwingConstants.CENTER);
+        equalButton.setBackground(ButtonColor);
+
+         dividerButton = new JButton("/");
+         dividerButton.setSize(60,60);
+         dividerButton.setMinimumSize(new Dimension(60,60));
+        dividerButton.setFont(dividerButton.getFont().deriveFont(32.0f));
+        dividerButton.setHorizontalAlignment(SwingConstants.CENTER);
+        dividerButton.setBackground(ButtonColor);
+
+         multiplicationButton = new JButton("*");
+         multiplicationButton.setSize(60,60);
+         multiplicationButton.setMinimumSize(new Dimension(60,60));
+        multiplicationButton.setFont(multiplicationButton.getFont().deriveFont(32.0f));
+        multiplicationButton.setHorizontalAlignment(SwingConstants.CENTER);
+        multiplicationButton.setBackground(ButtonColor);
+
+         deleteButton = new JButton("DEL");
+         deleteButton.setFont(deleteButton.getFont().deriveFont(16.0f));
+        deleteButton.setBackground(ButtonColor);
+
+         enterButton = new JButton("ENTER");
+         enterButton.setFont(enterButton.getFont().deriveFont(26.5f));
+        enterButton.setBackground(ButtonColor);
+
+         nextButton = new JButton(">");
+         nextButton.setFont(nextButton.getFont().deriveFont(32.0f));
+        nextButton.setBackground(ButtonColor);
+
+         prevButton = new JButton("<");
+         prevButton.setFont(prevButton.getFont().deriveFont(32.0f));
+        prevButton.setBackground(ButtonColor);
 
         oneButton.addActionListener(this);
         twoButton.addActionListener(this);
@@ -87,8 +196,8 @@ public class ButtonPanel extends JFrame implements ActionListener {
         deleteButton.addActionListener(this);
         nextButton.addActionListener(this);
         prevButton.addActionListener(this);
-       // what the fuck going on?  WindowWithnote.addFocusListener(this);
-        WindowWithResult.setEditable(false);
+
+
         //dorzuc enter - akcja
 
 
@@ -124,6 +233,7 @@ public class ButtonPanel extends JFrame implements ActionListener {
                             )
 
                         )
+                        .addGap(20)
                         .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
                                 .addGroup(layout.createSequentialGroup()
                                     .addComponent(plusButton)
@@ -135,6 +245,7 @@ public class ButtonPanel extends JFrame implements ActionListener {
                                 )
                                 .addComponent(enterButton)
                         )
+                        .addGap(20)
                         .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
                                 .addComponent(deleteButton)
                                 .addComponent(nextButton)
@@ -144,12 +255,16 @@ public class ButtonPanel extends JFrame implements ActionListener {
                 )
         );
 
+        /**
         layout.linkSize(SwingConstants.HORIZONTAL, oneButton, twoButton, threeButton, fourButton,
-                fiveButton, sixButton, sevenButton, eightButton, nineButton, zeroButton);
-        layout.linkSize(SwingConstants.HORIZONTAL, deleteButton, nextButton, prevButton, equalButton);
+        fiveButton, sixButton, sevenButton, eightButton, nineButton, zeroButton);
+
         layout.linkSize(SwingConstants.HORIZONTAL, plusButton, multiplicationButton);
         layout.linkSize(SwingConstants.HORIZONTAL, WindowWithComunicat, WindowWithnote);
         layout.linkSize(SwingConstants.HORIZONTAL, minusButton, dividerButton);
+*/
+        layout.linkSize(SwingConstants.VERTICAL,resultLabel,WindowWithResult);
+        layout.linkSize(SwingConstants.HORIZONTAL, deleteButton, nextButton, prevButton, equalButton);
 
         layout.setVerticalGroup(layout.createSequentialGroup()
                 .addGroup(layout.createSequentialGroup()
@@ -179,6 +294,7 @@ public class ButtonPanel extends JFrame implements ActionListener {
                                 )
                                 .addComponent(zeroButton)
                         )
+                        .addGap(20)
                         .addGroup(layout.createParallelGroup()
                                 .addGroup(layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
@@ -194,6 +310,7 @@ public class ButtonPanel extends JFrame implements ActionListener {
                                         .addComponent(enterButton)
                                 )
                         )
+                        .addGap(20)
                         .addGroup(layout.createSequentialGroup()
                                 .addComponent(deleteButton)
                                 .addComponent(nextButton)
@@ -201,12 +318,10 @@ public class ButtonPanel extends JFrame implements ActionListener {
                                 .addComponent(equalButton)
                         )
                 ));
-
+        setPreferredSize(new Dimension(WIDTH,HEIGHT));
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         pack();
         setVisible(true);
-        setPreferredSize(new Dimension(WIDTH,HEIGHT));
-
     }
 
     @Override
