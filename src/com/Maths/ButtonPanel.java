@@ -7,6 +7,8 @@ import java.awt.event.ActionListener;
 
 public class ButtonPanel extends JFrame implements ActionListener {
 
+
+
     public static final int HEIGHT = 500;
     public static  final  int WIDTH = 500;
 
@@ -38,6 +40,8 @@ public class ButtonPanel extends JFrame implements ActionListener {
     Color ButtonColor = Color.CYAN;
 
     public ButtonPanel(){
+
+        super("Magic Calculator");
 
         sub1 = new JPanel();
 

@@ -7,7 +7,7 @@ public class CalculattorFrame extends JFrame {
 
     public CalculattorFrame() {
 
-        super("Calculator");
+
         JFrame buttonPanel = new ButtonPanel();
 
 
