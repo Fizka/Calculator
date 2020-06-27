@@ -1,9 +1,9 @@
 # Magic Calculator
 
-# General Information
+## General Information
 
-Magic Calculator in Java.
+Magic Calculator in Java with GUI in Swing 
 
-#GUI
+## GUI
 
 ![GUI](./GUI.png)

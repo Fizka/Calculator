@@ -1,41 +1,44 @@
 package com.Maths;
-import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class ButtonPanel extends JFrame implements ActionListener {
+public class ButtonPanel extends JFrame {
 
     private String stringText;
     private String outcome;
 
     public static final int HEIGHT = 500;
-    public static  final  int WIDTH = 500;
+    public static  final  int WIDTH = 530;
 
-    private JButton oneButton;
-    private JButton twoButton;
-    private JButton threeButton;
-    private JButton fourButton;
-    private JButton fiveButton;
-    private JButton sixButton;
-    private JButton sevenButton;
-    private JButton eightButton;
-    private JButton nineButton;
-    private JButton zeroButton;
-    private JButton plusButton;
-    private JButton minusButton;
-    private JButton equalButton;
-    private JButton dividerButton;
-    private JButton multiplicationButton;
-    private JButton deleteButton;
-    private JButton enterButton;
-    private JButton nextButton;
-    private JButton prevButton;
-    private JTextField WindowWithResult;
-    private JTextField WindowWithnote;
-    private JTextField WindowWithComunicat;
-    private JLabel resultLabel;
+    protected JButton oneButton;
+    protected JButton twoButton;
+    protected JButton threeButton;
+    protected JButton fourButton;
+    protected JButton fiveButton;
+    protected JButton sixButton;
+    protected JButton sevenButton;
+    protected JButton eightButton;
+    protected JButton nineButton;
+    protected JButton zeroButton;
+    protected JButton plusButton;
+    protected JButton minusButton;
+    protected JButton equalButton;
+    protected JButton dividerButton;
+    protected JButton multiplicationButton;
+    protected JButton rightbracketsButton;
+    protected JButton leftbracketsButton;
+    protected JButton enterButton;
+    protected JButton powerButton; //potega
+    protected JButton strongButton; //silnia
+    protected JButton squareButton; //pierwiastek
+    protected JButton moduloButton; //
+    protected JTextField WindowWithResult;
+    protected JTextField WindowWithnote;
+    protected JTextArea WindowWithComunicat;
+    protected JLabel resultLabel;
+    protected JButton Delete;
 
     private JPanel sub1;
 
@@ -43,22 +46,25 @@ public class ButtonPanel extends JFrame implements ActionListener {
 
     public ButtonPanel(){
 
-        super("Magic Calculator");
+        super("ONP Kalkulator");
 
         sub1 = new JPanel();
 
-        WindowWithComunicat = new JTextField();
+        WindowWithComunicat = new JTextArea();
         WindowWithComunicat.setColumns(20);
+        WindowWithComunicat.setPreferredSize(new Dimension(400, 50));
         WindowWithComunicat.setEditable(false);
         WindowWithComunicat.setBackground(Color.lightGray);
+        WindowWithComunicat.setText("\n   Instrukcja: Wpisz równanie, nastepnie nacisnij ENTER.\n   Nie zapomnij wpisac znaku \"=\" na koncu.\n");
 
         WindowWithResult = new JTextField("", 20);
         WindowWithResult.setEditable(false);
         WindowWithResult.setBackground(Color.LIGHT_GRAY);
 
         WindowWithnote = new JTextField("",20);
+        WindowWithnote.setPreferredSize(new Dimension(400, 50));
 
-        resultLabel = new JLabel("OUTCOME =");
+        resultLabel = new JLabel("WYNIK =");
         resultLabel.setFont(resultLabel.getFont().deriveFont(32.0f));
         resultLabel.setHorizontalAlignment(SwingConstants.CENTER);
         resultLabel.setVerticalAlignment(SwingConstants.CENTER);
@@ -107,15 +113,32 @@ public class ButtonPanel extends JFrame implements ActionListener {
                                         .addComponent(multiplicationButton)
                                         .addComponent(dividerButton)
                                 )
+                                .addComponent(equalButton)
                                 .addComponent(enterButton)
                         )
                         .addGap(20)
                         .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                                .addComponent(deleteButton)
-                                .addComponent(nextButton)
-                                .addComponent(prevButton)
-                                .addComponent(equalButton)
+                                .addGroup(layout.createSequentialGroup()
+                                        .addComponent(squareButton)
+                                        .addComponent(rightbracketsButton)
+
+                                )
+                                .addGroup(layout.createSequentialGroup()
+                                        .addComponent(powerButton)
+                                        .addComponent(leftbracketsButton)
+
+                                )
+                                .addGroup(layout.createSequentialGroup()
+                                        .addComponent(moduloButton)
+                                        .addComponent(strongButton)
+
+                                )
+                                .addComponent(Delete)
                         )
+
+
+
+
                 )
         );
 
@@ -129,7 +152,10 @@ public class ButtonPanel extends JFrame implements ActionListener {
         */
 
         layout.linkSize(SwingConstants.VERTICAL,resultLabel,WindowWithResult);
-        layout.linkSize(SwingConstants.HORIZONTAL, deleteButton, nextButton, prevButton, equalButton);
+
+        //layout.linkSize(SwingConstants.HORIZONTAL, rightbracketsButton,strongButton ,leftbracketsButton);
+        layout.linkSize(SwingConstants.HORIZONTAL, enterButton, equalButton);
+        layout.linkSize(SwingConstants.VERTICAL,enterButton,Delete);
 
         layout.setVerticalGroup(layout.createSequentialGroup()
                 .addGroup(layout.createSequentialGroup()
@@ -160,29 +186,50 @@ public class ButtonPanel extends JFrame implements ActionListener {
                                 .addComponent(zeroButton)
                         )
                         .addGap(20)
-                        .addGroup(layout.createParallelGroup()
-                                .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                                                .addGroup(layout.createSequentialGroup()
-                                                .addComponent(plusButton)
-                                                .addComponent(multiplicationButton)
-                                                )
-                                                .addGroup(layout.createSequentialGroup()
-                                                .addComponent(minusButton)
-                                                .addComponent(dividerButton)
-                                                 )
-                                        )
-                                        .addComponent(enterButton)
-                                )
-                        )
-                        .addGap(20)
-                        .addGroup(layout.createSequentialGroup()
-                                .addComponent(deleteButton)
-                                .addComponent(nextButton)
-                                .addComponent(prevButton)
-                                .addComponent(equalButton)
-                        )
+                            .addGroup(layout.createParallelGroup()
+                                    .addGroup(layout.createSequentialGroup()
+                                            .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                                    .addGroup(layout.createSequentialGroup()
+                                                    .addComponent(plusButton)
+                                                    .addComponent(multiplicationButton)
+                                                    )
+                                                    .addGroup(layout.createSequentialGroup()
+                                                    .addComponent(minusButton)
+                                                    .addComponent(dividerButton)
+                                                     )
+                                            )
+                                            .addComponent(equalButton)
+                                            .addComponent(enterButton)
+                                    )
+                            )
+                            .addGap(20)
+
+                            .addGroup(layout.createParallelGroup()
+                                    .addGroup(layout.createSequentialGroup()
+                                            .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                                    .addGroup(layout.createSequentialGroup()
+                                                            .addComponent(squareButton)
+                                                            .addComponent(powerButton)
+                                                            .addComponent(moduloButton)
+                                                    )
+                                                    .addGroup(layout.createSequentialGroup()
+                                                            .addComponent(rightbracketsButton)
+                                                            .addComponent(leftbracketsButton)
+                                                            .addComponent(strongButton)
+                                                    )
+
+                                            )
+                                            .addComponent(Delete)
+                                    )
+                            )
+
+
+
+
+
                 ));
+        this.setMinimumSize(new Dimension(530,500)); //zabezpieczenie przed zmiana rozmiaru - rozmar minimalny
+        this.setMaximumSize(new Dimension(530,700)); //zabezpieczenie przed zmiana rozmiaru - rozmar maksymalny
         setPreferredSize(new Dimension(WIDTH,HEIGHT));
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         pack();
@@ -198,7 +245,8 @@ public class ButtonPanel extends JFrame implements ActionListener {
         oneButton.setFont(oneButton.getFont().deriveFont(32.0f));
         oneButton.setHorizontalAlignment(SwingConstants.CENTER);
         oneButton.setBackground(ButtonColor);
-        oneButton.addActionListener(this);
+        oneButton.addActionListener(new ButtonClick(this));
+        oneButton.setActionCommand("oneButton");
 
         twoButton = new JButton("2");
         twoButton.setSize(60,60);
@@ -206,7 +254,8 @@ public class ButtonPanel extends JFrame implements ActionListener {
         twoButton.setFont(twoButton.getFont().deriveFont(32.0f));
         twoButton.setHorizontalAlignment(SwingConstants.CENTER);
         twoButton.setBackground(ButtonColor);
-        twoButton.addActionListener(this);
+        twoButton.addActionListener(new ButtonClick(this));
+        twoButton.setActionCommand("twoButton");
 
         threeButton = new JButton("3");
         threeButton.setSize(60,60);
@@ -214,7 +263,8 @@ public class ButtonPanel extends JFrame implements ActionListener {
         threeButton.setFont(threeButton.getFont().deriveFont(32.0f));
         threeButton.setHorizontalAlignment(SwingConstants.CENTER);
         threeButton.setBackground(ButtonColor);
-        threeButton.addActionListener(this);
+        threeButton.addActionListener(new ButtonClick(this));
+        threeButton.setActionCommand("threeButton");
 
         fourButton = new JButton("4");
         fourButton.setSize(60,60);
@@ -222,7 +272,8 @@ public class ButtonPanel extends JFrame implements ActionListener {
         fourButton.setFont(fourButton.getFont().deriveFont(32.0f));
         fourButton.setHorizontalAlignment(SwingConstants.CENTER);
         fourButton.setBackground(ButtonColor);
-        fourButton.addActionListener(this);
+        fourButton.addActionListener(new ButtonClick(this));
+        fourButton.setActionCommand("fourButton");
 
         fiveButton = new JButton("5");
         fiveButton.setSize(60,60);
@@ -230,7 +281,8 @@ public class ButtonPanel extends JFrame implements ActionListener {
         fiveButton.setFont(fiveButton.getFont().deriveFont(32.0f));
         fiveButton.setHorizontalAlignment(SwingConstants.CENTER);
         fiveButton.setBackground(ButtonColor);
-        fiveButton.addActionListener(this);
+        fiveButton.addActionListener(new ButtonClick(this));
+        fiveButton.setActionCommand("fiveButton");
 
         sixButton = new JButton("6");
         sixButton.setSize(60,60);
@@ -238,7 +290,8 @@ public class ButtonPanel extends JFrame implements ActionListener {
         sixButton.setFont(sixButton.getFont().deriveFont(32.0f));
         sixButton.setHorizontalAlignment(SwingConstants.CENTER);
         sixButton.setBackground(ButtonColor);
-        sixButton.addActionListener(this);
+        sixButton.addActionListener(new ButtonClick(this));
+        sixButton.setActionCommand("sixButton");
 
         sevenButton = new JButton("7");
         sevenButton.setSize(60,60);
@@ -246,7 +299,8 @@ public class ButtonPanel extends JFrame implements ActionListener {
         sevenButton.setFont(sevenButton.getFont().deriveFont(32.0f));
         sevenButton.setHorizontalAlignment(SwingConstants.CENTER);
         sevenButton.setBackground(ButtonColor);
-        sevenButton.addActionListener(this);
+        sevenButton.addActionListener(new ButtonClick(this));
+        sevenButton.setActionCommand("sevenButton");
 
         eightButton = new JButton("8");
         eightButton.setSize(60,60);
@@ -254,7 +308,8 @@ public class ButtonPanel extends JFrame implements ActionListener {
         eightButton.setFont(eightButton.getFont().deriveFont(32.0f));
         eightButton.setHorizontalAlignment(SwingConstants.CENTER);
         eightButton.setBackground(ButtonColor);
-        eightButton.addActionListener(this);
+        eightButton.addActionListener(new ButtonClick(this));
+        eightButton.setActionCommand("eightButton");
 
         nineButton = new JButton("9");
         nineButton.setSize(60,60);
@@ -262,7 +317,8 @@ public class ButtonPanel extends JFrame implements ActionListener {
         nineButton.setFont(nineButton.getFont().deriveFont(32.0f));
         nineButton.setHorizontalAlignment(SwingConstants.CENTER);
         nineButton.setBackground(ButtonColor);
-        nineButton.addActionListener(this);
+        nineButton.addActionListener(new ButtonClick(this));
+        nineButton.setActionCommand("nineButton");
 
         zeroButton = new JButton("0");
         zeroButton.setSize(60,60);
@@ -270,7 +326,8 @@ public class ButtonPanel extends JFrame implements ActionListener {
         zeroButton.setFont(zeroButton.getFont().deriveFont(32.0f));
         zeroButton.setHorizontalAlignment(SwingConstants.CENTER);
         zeroButton.setBackground(ButtonColor);
-        zeroButton.addActionListener(this);
+        zeroButton.addActionListener(new ButtonClick(this));
+        zeroButton.setActionCommand("zeroButton");
 
         plusButton = new JButton("+");
         plusButton.setSize(60,60);
@@ -278,7 +335,8 @@ public class ButtonPanel extends JFrame implements ActionListener {
         plusButton.setFont(plusButton.getFont().deriveFont(32.0f));
         plusButton.setHorizontalAlignment(SwingConstants.CENTER);
         plusButton.setBackground(ButtonColor);
-        plusButton.addActionListener(this);
+        plusButton.addActionListener(new ButtonClick(this));
+        plusButton.setActionCommand("plusButton");
 
         minusButton = new JButton("-");
         minusButton.setSize(60,60);
@@ -286,15 +344,16 @@ public class ButtonPanel extends JFrame implements ActionListener {
         minusButton.setFont(minusButton.getFont().deriveFont(32.0f));
         minusButton.setHorizontalAlignment(SwingConstants.CENTER);
         minusButton.setBackground(ButtonColor);
-        minusButton.addActionListener(this);
+        minusButton.addActionListener(new ButtonClick(this));
+        minusButton.setActionCommand("minusButton");
 
-        equalButton = new JButton("=");
-        equalButton.setSize(60,60);
-        equalButton.setMinimumSize(new Dimension(60,60));
+        equalButton = new JButton("  =  ");
         equalButton.setFont(equalButton.getFont().deriveFont(32.0f));
+        equalButton.setMinimumSize(new Dimension(120,60));
         equalButton.setHorizontalAlignment(SwingConstants.CENTER);
         equalButton.setBackground(ButtonColor);
-        equalButton.addActionListener(this);
+        equalButton.addActionListener(new ButtonClick(this));
+        equalButton.setActionCommand("equalButton");
 
         dividerButton = new JButton("/");
         dividerButton.setSize(60,60);
@@ -302,8 +361,8 @@ public class ButtonPanel extends JFrame implements ActionListener {
         dividerButton.setFont(dividerButton.getFont().deriveFont(32.0f));
         dividerButton.setHorizontalAlignment(SwingConstants.CENTER);
         dividerButton.setBackground(ButtonColor);
-        dividerButton.addActionListener(this);
-
+        dividerButton.addActionListener(new ButtonClick(this));
+        dividerButton.setActionCommand("dividerButton");
 
         multiplicationButton = new JButton("*");
         multiplicationButton.setSize(60,60);
@@ -311,151 +370,70 @@ public class ButtonPanel extends JFrame implements ActionListener {
         multiplicationButton.setFont(multiplicationButton.getFont().deriveFont(32.0f));
         multiplicationButton.setHorizontalAlignment(SwingConstants.CENTER);
         multiplicationButton.setBackground(ButtonColor);
-        multiplicationButton.addActionListener(this);
+        multiplicationButton.addActionListener(new ButtonClick(this));
+        multiplicationButton.setActionCommand("multiplicationButton");
 
+        rightbracketsButton = new JButton("(");
+        rightbracketsButton.setSize(60,60);
+        rightbracketsButton.setMinimumSize(new Dimension(60,60));
+        rightbracketsButton.setFont(rightbracketsButton.getFont().deriveFont(16.0f));
+        rightbracketsButton.setBackground(ButtonColor);
+        rightbracketsButton.addActionListener(new ButtonClick(this));
+        rightbracketsButton.setActionCommand("rightbracketsButton");
 
-        deleteButton = new JButton("DEL");
-        deleteButton.setFont(deleteButton.getFont().deriveFont(16.0f));
-        deleteButton.setBackground(ButtonColor);
-        deleteButton.addActionListener(this);
+        leftbracketsButton = new JButton(")");
+        leftbracketsButton.setSize(60,60);
+        leftbracketsButton.setMinimumSize(new Dimension(60,60));
+        leftbracketsButton.setFont(leftbracketsButton.getFont().deriveFont(16.0f));
+        leftbracketsButton.setBackground(ButtonColor);
+        leftbracketsButton.addActionListener(new ButtonClick(this));
+        leftbracketsButton.setActionCommand("leftbracketsButton");
 
         enterButton = new JButton("ENTER");
+        enterButton.setMinimumSize(new Dimension(120,60));
         enterButton.setFont(enterButton.getFont().deriveFont(26.5f));
         enterButton.setBackground(ButtonColor);
-        enterButton.addActionListener(this);
+        enterButton.addActionListener(new ButtonClick(this));
+        enterButton.setActionCommand("enterButton");
 
-        nextButton = new JButton(">");
-        nextButton.setFont(nextButton.getFont().deriveFont(32.0f));
-        nextButton.setBackground(ButtonColor);
-        nextButton.addActionListener(this);
+        Delete = new JButton("DELETE");
+        Delete.setMinimumSize(new Dimension(120,60));
+        Delete.setFont(enterButton.getFont().deriveFont(26.5f));
+        Delete.setBackground(ButtonColor);
+        Delete.addActionListener(new ButtonClick(this));
+        Delete.setActionCommand("Delete");
 
-        prevButton = new JButton("<");
-        prevButton.setFont(prevButton.getFont().deriveFont(32.0f));
-        prevButton.setBackground(ButtonColor);
-        prevButton.addActionListener(this);
-    }
+        powerButton = new JButton("^");
+        powerButton.setSize(60,60);
+        powerButton.setMinimumSize(new Dimension(60,60));
+        powerButton.setFont(powerButton.getFont().deriveFont(32.0f));
+        powerButton.setBackground(ButtonColor);
+        powerButton.addActionListener(new ButtonClick(this));
+        powerButton.setActionCommand("powerButton");
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
+        squareButton = new JButton("v");
+        squareButton.setSize(60,60);
+        squareButton.setMinimumSize(new Dimension(60,60));
+        squareButton.setFont(squareButton.getFont().deriveFont(32.0f));
+        squareButton.setBackground(ButtonColor);
+        squareButton.addActionListener(new ButtonClick(this));
+        squareButton.setActionCommand("squareButton");
 
-        Object source = e.getSource();
+        moduloButton = new JButton("%");
+        moduloButton.setSize(60,60);
+        moduloButton.setMinimumSize(new Dimension(60,60));
+        moduloButton.setFont(moduloButton.getFont().deriveFont(32.0f));
+        moduloButton.setBackground(ButtonColor);
+        moduloButton.addActionListener(new ButtonClick(this));
+        moduloButton.setActionCommand("moduloButton");
 
-        stringText = getWindowWithnote();
-
-        if(source == oneButton)
-        {
-            stringText+="1";
-        }
-
-        else if(source == twoButton)
-        {
-            stringText+="2";
-        }
-
-        else if(source == threeButton)
-        {
-            stringText+="3";
-        }
-        else if(source == fourButton)
-        {
-            stringText+="4";
-        }
-
-        else if(source == fiveButton)
-        {
-            stringText+="5";
-        }
-
-        else if(source == sixButton)
-        {
-            stringText+="6";
-        }
-
-        else if(source == sevenButton)
-        {
-            stringText+="7";
-        }
-
-        else if(source == eightButton)
-        {
-            stringText+="8";
-        }
-
-        else if(source == nineButton)
-        {
-            stringText+="9";
-        }
-
-        else if(source == zeroButton)
-        {
-            stringText+="0";
-        }
-
-        else if(source == plusButton)
-        {
-            stringText+=" + ";
-        }
-
-        else if(source == minusButton)
-        {
-            stringText+=" - ";
-        }
-
-        else if(source == equalButton)
-        {
-            stringText+=" = ";
-        }
-
-        else if(source == dividerButton)
-        {
-            stringText+=" / ";
-        }
-
-        else if(source == multiplicationButton)
-        {
-            stringText+=" * ";
-        }
-
-        else if(source == deleteButton)
-        {
-
-            stringText = getWindowWithnote();
-            int i = stringText.length();
-            char b[] = new char[i];
-
-            String[] znaki = stringText.split(" ");
-            if(znaki.length > 1)
-            {
-                stringText="";
-                for (int x = 1; x < znaki.length; x++) {
-                    stringText += znaki[x - 1];
-                    if((znaki.length-1) != x )
-                        stringText +=" ";
-                }
-
-            }
-            else{
-
-                for (int x = 0; x < i - 1; x++)
-                    b[x] = stringText.charAt(x);
-
-                stringText = String.valueOf(b);
-            }
-
-        }
-
-        else if(source == nextButton)
-        {
-            stringText+=" ";
-        }
-
-        else if(source == prevButton)
-        {
-            stringText+=" ";
-        }
-
-        setWindowWithnote(stringText);
-
+        strongButton = new JButton("!");
+        strongButton.setSize(60,60);
+        strongButton.setMinimumSize(new Dimension(60,60));
+        strongButton.setFont(strongButton.getFont().deriveFont(32.0f));
+        strongButton.setBackground(ButtonColor);
+        strongButton.addActionListener(new ButtonClick(this));
+        strongButton.setActionCommand("strongButton");
     }
 
     public String getWindowWithResult() {
